@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.31101.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SsisUp", "SsisUp\SsisUp.csproj", "{4AACDE1C-FD3B-410C-AE16-C10CF9945698}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SsisUp.Tests", "SsisUp.Tests\SsisUp.Tests.csproj", "{73E9B416-1A50-4272-9550-86B9A8E494D4}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{4AACDE1C-FD3B-410C-AE16-C10CF9945698}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4AACDE1C-FD3B-410C-AE16-C10CF9945698}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4AACDE1C-FD3B-410C-AE16-C10CF9945698}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4AACDE1C-FD3B-410C-AE16-C10CF9945698}.Release|Any CPU.Build.0 = Release|Any CPU
+		{73E9B416-1A50-4272-9550-86B9A8E494D4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{73E9B416-1A50-4272-9550-86B9A8E494D4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{73E9B416-1A50-4272-9550-86B9A8E494D4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{73E9B416-1A50-4272-9550-86B9A8E494D4}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
