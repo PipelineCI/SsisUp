@@ -30,6 +30,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="DbUp">
+      <HintPath>..\packages\dbup.3.2.1\lib\NET35\DbUp.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -39,8 +42,31 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class1.cs" />
+    <Compile Include="Builders\JobConfigurationParser.cs" />
+    <Compile Include="Builders\JobConfigurationParserException.cs" />
+    <Compile Include="Builders\SqlScriptBuilder.cs" />
+    <Compile Include="Configurations\ConsoleLogJournal.cs" />
+    <Compile Include="Configurations\FrequencyDay.cs" />
+    <Compile Include="Configurations\JobAction.cs" />
+    <Compile Include="Configurations\JobConfiguration.cs" />
+    <Compile Include="Configurations\NotificationConfiguration.cs" />
+    <Compile Include="Configurations\OrderedSqlScript.cs" />
+    <Compile Include="Configurations\ScheduleConfiguration.cs" />
+    <Compile Include="Configurations\SsisSubSystem.cs" />
+    <Compile Include="Configurations\StepConfiguration.cs" />
+    <Compile Include="Helpers\IoWrapper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Scripts\CreateJob.cs" />
+    <Compile Include="Scripts\CreateNotification.cs" />
+    <Compile Include="Scripts\CreateSchedule.cs" />
+    <Compile Include="Scripts\CreateStep.cs" />
+    <Compile Include="Scripts\DropJob.cs" />
+    <Compile Include="Scripts\EnableJob.cs" />
+    <Compile Include="Services\IntegrationServicesFileService.cs" />
+    <Compile Include="Services\SqlExecutionService.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
