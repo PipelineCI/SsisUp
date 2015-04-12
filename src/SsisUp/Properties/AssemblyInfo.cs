@@ -8,9 +8,9 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyTitle("SsisUp")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
+[assembly: AssemblyCompany("JSM85")]
 [assembly: AssemblyProduct("SsisUp")]
-[assembly: AssemblyCopyright("Copyright © JSM85 2015")]
+[assembly: AssemblyCopyright("Copyright © 2015 JSM85")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
