@@ -13,6 +13,6 @@
     <description>$description$</description>
     <releaseNotes>Summary of changes made in this release of the package.</releaseNotes>
     <copyright>Copyright (c) 2015 JSM85</copyright>
-    <tags>Tag1 Tag2</tags>
+    <tags>Ssis, Integration Services, dbup</tags>
   </metadata>
 </package>

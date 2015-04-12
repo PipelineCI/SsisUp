@@ -6,7 +6,7 @@ using System.Runtime.InteropServices;
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
 [assembly: AssemblyTitle("SsisUp")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyDescription("A framework to automate deployments of SSIS using DbUp")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("JSM85")]
 [assembly: AssemblyProduct("SsisUp")]
