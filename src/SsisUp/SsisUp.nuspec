@@ -11,7 +11,7 @@
     <iconUrl>https://raw.githubusercontent.com/jsm85/SsisUp/master/assets/Logo.ico</iconUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>$description$</description>
-    <releaseNotes>Summary of changes made in this release of the package.</releaseNotes>
+    <releaseNotes>https://github.com/jsm85/SsisUp/blob/master/ReleaseNotes.md</releaseNotes>
     <copyright>Copyright (c) 2015 JSM85</copyright>
     <tags>Ssis, Integration Services, dbup</tags>
   </metadata>
