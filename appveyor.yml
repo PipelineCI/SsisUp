@@ -1,0 +1,7 @@
+version: 1.0.{build}
+nuget:
+  project_feed: true
+before_build:
+- nuget restore src\SsisUp.sln
+build:
+  verbosity: minimal
