@@ -2,7 +2,9 @@
 using System.Linq;
 using NUnit.Framework;
 using SsisUp.Builders;
-using SsisUp.Configurations;
+using SsisUp.Builders.Parsers;
+using SsisUp.Builders.References;
+using SsisUp.ScriptProviders;
 
 namespace SsisUp.Tests.Builders
 {
@@ -33,7 +35,7 @@ namespace SsisUp.Tests.Builders
                         .StartingAt(TimeSpan.FromSeconds(6)))
                     .Enabled();
 
-            var builder = new SqlScriptBuilder(new JobConfigurationParser());
+            var builder = new SqlScriptProvider(new JobConfigurationParser());
             var scripts = builder.Build(jobConfiguration);
 
             Assert.That(scripts != null);

@@ -1,6 +1,7 @@
 ﻿using Moq;
 using NUnit.Framework;
-using SsisUp.Configurations;
+using SsisUp.Builders;
+using SsisUp.Builders.References;
 using SsisUp.Helpers;
 using SsisUp.Services;
 

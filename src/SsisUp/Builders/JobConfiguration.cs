@@ -2,6 +2,8 @@ using System;
 using System.Collections.Generic;
 using DbUp.Engine;
 using SsisUp.Builders;
+using SsisUp.Helpers;
+using SsisUp.Services;
 
 namespace SsisUp.Configurations
 {
@@ -19,6 +21,7 @@ namespace SsisUp.Configurations
         public List<ScheduleConfiguration> Schedules { get; set; }
         public NotificationConfiguration Notification { get; set; }
 
+        
 
         public static JobConfiguration Create()
         {
@@ -26,6 +29,7 @@ namespace SsisUp.Configurations
             return Configuration;
         }
 
+        
         public JobConfiguration WithName(string name)
         {
             JobName = name;

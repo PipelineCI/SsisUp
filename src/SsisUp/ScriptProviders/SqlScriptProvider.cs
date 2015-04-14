@@ -7,16 +7,16 @@ using SsisUp.Scripts;
 
 namespace SsisUp.Builders
 {
-    public interface ISqlScriptBuilder
+    public interface ISqlScriptProvider
     {
         IEnumerable<SqlScript> Build(JobConfiguration jobConfiguration);
     }
 
-    public class SqlScriptBuilder : ISqlScriptBuilder
+    public class SqlScriptProvider : ISqlScriptProvider
     {
         private readonly IJobConfigurationParser jobConfigurationParser;
 
-        public SqlScriptBuilder(IJobConfigurationParser jobConfigurationParser)
+        public SqlScriptProvider(IJobConfigurationParser jobConfigurationParser)
         {
             if (jobConfigurationParser == null) throw new ArgumentNullException("jobConfigurationParser");
             this.jobConfigurationParser = jobConfigurationParser;
