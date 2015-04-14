@@ -1,4 +1,7 @@
+using System;
 using System.Collections.Generic;
+using DbUp.Engine;
+using SsisUp.Builders;
 
 namespace SsisUp.Configurations
 {

@@ -62,6 +62,7 @@
     <Compile Include="Scripts\CreateStep.cs" />
     <Compile Include="Scripts\DropJob.cs" />
     <Compile Include="Scripts\EnableJob.cs" />
+    <Compile Include="Services\Deployment.cs" />
     <Compile Include="Services\IntegrationServicesFileService.cs" />
     <Compile Include="Services\SqlExecutionService.cs" />
   </ItemGroup>

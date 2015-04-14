@@ -1,3 +1,5 @@
+using System.Dynamic;
+
 namespace SsisUp.Configurations
 {
     public class StepConfiguration
@@ -19,9 +21,16 @@ namespace SsisUp.Configurations
         public static StepConfiguration Create()
         {
             Configuration = new StepConfiguration();
+            SetDefaults();
             return Configuration;
         }
-        
+
+        private static void SetDefaults()
+        {
+            Configuration.RunAs = "";
+            Configuration.FailureAction = JobAction.QuitWithFailure;
+        }
+
         public StepConfiguration WithName(string name)
         {
             StepName = name;
