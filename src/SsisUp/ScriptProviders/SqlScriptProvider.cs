@@ -2,10 +2,11 @@
 using System.Collections.Generic;
 using System.Linq;
 using DbUp.Engine;
-using SsisUp.Configurations;
-using SsisUp.Scripts;
+using SsisUp.Builders;
+using SsisUp.Builders.Parsers;
+using SsisUp.ScriptProviders.Scripts;
 
-namespace SsisUp.Builders
+namespace SsisUp.ScriptProviders
 {
     public interface ISqlScriptProvider
     {

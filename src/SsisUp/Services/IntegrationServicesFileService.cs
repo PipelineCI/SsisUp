@@ -1,5 +1,6 @@
 ﻿using System;
-using SsisUp.Configurations;
+using SsisUp.Builders;
+using SsisUp.Builders.References;
 using SsisUp.Helpers;
 
 namespace SsisUp.Services

@@ -1,11 +1,6 @@
-using System;
 using System.Collections.Generic;
-using DbUp.Engine;
-using SsisUp.Builders;
-using SsisUp.Helpers;
-using SsisUp.Services;
 
-namespace SsisUp.Configurations
+namespace SsisUp.Builders
 {
     public class JobConfiguration
     {

@@ -1,6 +1,6 @@
-﻿using SsisUp.Configurations;
+﻿using SsisUp.Builders;
 
-namespace SsisUp.Scripts
+namespace SsisUp.ScriptProviders.Scripts
 {
     public class CreateStep : OrderedSqlScript
     {

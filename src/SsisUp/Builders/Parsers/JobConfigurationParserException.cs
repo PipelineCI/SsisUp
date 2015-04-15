@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace SsisUp.Builders
+namespace SsisUp.Builders.Parsers
 {
     public class JobConfigurationParserException : Exception
     {

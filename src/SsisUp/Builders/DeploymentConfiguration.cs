@@ -1,29 +1,31 @@
 ﻿using System;
 using DbUp.Engine;
 using DbUp.Helpers;
-using SsisUp.Builders;
-using SsisUp.Configurations;
+using SsisUp.Builders.Parsers;
 using SsisUp.Helpers;
+using SsisUp.ScriptProviders;
+using SsisUp.Services;
 
-namespace SsisUp.Services
+namespace SsisUp.Builders
 {
-    public class Deployment
+    public class DeploymentConfiguration
     {
-        private static Deployment DeploymentConfiguration { get; set; }
+        private static DeploymentConfiguration Configuration { get; set; }
 
-        public JobConfiguration JobConfiguration { get; set; }
-        public IJournal DbUpJournal { get; set; }
-        public bool Debug { get; set; }
+        public bool Debug { get; private set; }
         public string ConnectionString { get; set; }
+        public IJournal DbUpJournal { get; private set; }
+        public JobConfiguration JobConfiguration { get; private set; }
 
-        public IFileService FileService { get; set; }
-        public ISqlExecutionService SqlExecutionService { get; set; }
-        public IJobConfigurationParser JobConfigurationParser { get; set; }
+        public IFileService FileService { get; private set; }
+        public SqlScriptProvider SqlScriptProvider { get; private set; }
+        public ISqlExecutionService SqlExecutionService { get; private set; }
+        public IJobConfigurationParser JobConfigurationParser { get; private set; }
 
 
-        public static Deployment Create()
+        public static DeploymentConfiguration Create()
         {
-            DeploymentConfiguration = new Deployment
+            Configuration = new DeploymentConfiguration
             {
                 DbUpJournal = new NullJournal(),
                 Debug = false,
@@ -32,73 +34,70 @@ namespace SsisUp.Services
                 JobConfigurationParser = new JobConfigurationParser(),
             };
 
-            DeploymentConfiguration.SqlScriptProvider =
-                new SqlScriptProvider(DeploymentConfiguration.JobConfigurationParser);
+            Configuration.SqlScriptProvider =
+                new SqlScriptProvider(Configuration.JobConfigurationParser);
             
-            return DeploymentConfiguration;
+            return Configuration;
         }
 
-        public SqlScriptProvider SqlScriptProvider { get; set; }
 
-        public Deployment WithCustomFileService(IFileService fileService)
+        public DeploymentConfiguration WithCustomFileService(IFileService fileService)
         {
-            DeploymentConfiguration.FileService = fileService;
-            return DeploymentConfiguration;
+            Configuration.FileService = fileService;
+            return Configuration;
         }
 
-        public Deployment WithCustomSqlExecutionService(ISqlExecutionService sqlExecutionService)
+        public DeploymentConfiguration WithCustomSqlExecutionService(ISqlExecutionService sqlExecutionService)
         {
-            DeploymentConfiguration.SqlExecutionService = sqlExecutionService;
-            return DeploymentConfiguration;
+            Configuration.SqlExecutionService = sqlExecutionService;
+            return Configuration;
         }
 
-        public Deployment WithCustomJobConfigurationParser(IJobConfigurationParser jobConfigurationParser)
+        public DeploymentConfiguration WithCustomJobConfigurationParser(IJobConfigurationParser jobConfigurationParser)
         {
-            DeploymentConfiguration.JobConfigurationParser = jobConfigurationParser;
-            return DeploymentConfiguration;
+            Configuration.JobConfigurationParser = jobConfigurationParser;
+            return Configuration;
         }
 
+        public DeploymentConfiguration ToDatabase(string connectionString)
+        {
+            Configuration.ConnectionString = connectionString;
+            return Configuration;
+        }
+
+        public DeploymentConfiguration WithJobConfiguration(JobConfiguration jobConfiguration)
+        {
+            if (jobConfiguration == null) throw new ArgumentNullException("jobConfiguration");
+            Configuration.JobConfiguration = jobConfiguration;
+            return Configuration;
+        }
+
+        public DeploymentConfiguration WithJournal(IJournal journal)
+        {
+            if (journal == null) throw new ArgumentNullException("journal");
+            Configuration.DbUpJournal = journal;
+            return Configuration;
+        }
+
+        public DeploymentConfiguration EnableVerboseLogging()
+        {
+            Configuration.Debug = true;
+            return Configuration;
+        }
 
         public int Deploy()
         {
-            JobConfigurationParser.Parse(DeploymentConfiguration.JobConfiguration);
+            JobConfigurationParser.Parse(Configuration.JobConfiguration);
 
-            var scripts = SqlScriptProvider.Build(DeploymentConfiguration.JobConfiguration);
-            var exitCode = SqlExecutionService.Execute(DeploymentConfiguration.ConnectionString, scripts, DeploymentConfiguration.Debug);
+            var scripts = SqlScriptProvider.Build(Configuration.JobConfiguration);
+            var exitCode = SqlExecutionService.Execute(Configuration.ConnectionString, scripts, Configuration.Debug);
 
             if (exitCode != 0)
                 return exitCode;
 
-            exitCode = FileService.Deploy(DeploymentConfiguration.JobConfiguration);
+            exitCode = FileService.Deploy(Configuration.JobConfiguration);
 
             return exitCode;
         }
-
-        public Deployment ToDatabase(string connectionString)
-        {
-            DeploymentConfiguration.ConnectionString = connectionString;
-            return DeploymentConfiguration;
-        }
-
-        public Deployment WithJobConfiguration(JobConfiguration jobConfiguration)
-        {
-            if (jobConfiguration == null) throw new ArgumentNullException("jobConfiguration");
-            DeploymentConfiguration.JobConfiguration = jobConfiguration;
-            return DeploymentConfiguration;
-        }
-
-        public Deployment WithJournal(IJournal journal)
-        {
-            if (journal == null) throw new ArgumentNullException("journal");
-            DeploymentConfiguration.DbUpJournal = journal;
-            return DeploymentConfiguration;
-        }
-
-        public Deployment EnableVerboseLogging()
-        {
-            DeploymentConfiguration.Debug = true;
-            return DeploymentConfiguration;
-        }
-
     }
 }

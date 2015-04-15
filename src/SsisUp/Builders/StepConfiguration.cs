@@ -1,6 +1,6 @@
-using System.Dynamic;
+using SsisUp.Builders.References;
 
-namespace SsisUp.Configurations
+namespace SsisUp.Builders
 {
     public class StepConfiguration
     {

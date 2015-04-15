@@ -1,6 +1,6 @@
-using SsisUp.Configurations;
+using SsisUp.Builders.References;
 
-namespace SsisUp.Builders
+namespace SsisUp.Builders.Parsers
 {
     public interface IJobConfigurationParser
     {

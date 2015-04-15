@@ -2,7 +2,7 @@
 using System.Linq;
 using DbUp.Engine;
 
-namespace SsisUp.Configurations
+namespace SsisUp.Builders.Journals
 {
     public class ConsoleLogJournal : IJournal
     {

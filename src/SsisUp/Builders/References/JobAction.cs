@@ -1,4 +1,4 @@
-namespace SsisUp.Configurations
+namespace SsisUp.Builders.References
 {
     public enum JobAction
     {

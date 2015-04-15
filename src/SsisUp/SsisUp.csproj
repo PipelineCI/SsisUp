@@ -42,27 +42,28 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Builder\JobConfigurationParser.cs" />
-    <Compile Include="Builder\JobConfigurationParserException.cs" />
-    <Compile Include="ScriptProvider\SqlScriptProvider.cs" />
-    <Compile Include="Configurations\Journals\ConsoleLogJournal.cs" />
-    <Compile Include="Configurations\References\FrequencyDay.cs" />
-    <Compile Include="Configurations\References\JobAction.cs" />
-    <Compile Include="Configurations\JobConfiguration.cs" />
-    <Compile Include="Configurations\NotificationConfiguration.cs" />
-    <Compile Include="Configurations\OrderedSqlScript.cs" />
-    <Compile Include="Configurations\ScheduleConfiguration.cs" />
-    <Compile Include="Configurations\References\SsisSubSystem.cs" />
-    <Compile Include="Configurations\StepConfiguration.cs" />
+    <Compile Include="Builders\Parsers\JobConfigurationParser.cs" />
+    <Compile Include="Builders\Parsers\JobConfigurationParserException.cs" />
+    <Compile Include="ScriptProviders\SqlScriptProvider.cs" />
+    <Compile Include="Builders\Journals\ConsoleLogJournal.cs" />
+    <Compile Include="Builders\References\FrequencyDay.cs" />
+    <Compile Include="Builders\References\JobAction.cs" />
+    <Compile Include="Builders\JobConfiguration.cs" />
+    <Compile Include="Builders\NotificationConfiguration.cs" />
+    <Compile Include="ScriptProviders\Scripts\OrderedSqlScript.cs" />
+    <Compile Include="Builders\ScheduleConfiguration.cs" />
+    <Compile Include="Builders\References\SsisSubSystem.cs" />
+    <Compile Include="Builders\StepConfiguration.cs" />
     <Compile Include="Helpers\IoWrapper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ScriptProvider\Scripts\CreateJob.cs" />
-    <Compile Include="ScriptProvider\Scripts\CreateNotification.cs" />
-    <Compile Include="ScriptProvider\Scripts\CreateSchedule.cs" />
-    <Compile Include="ScriptProvider\Scripts\CreateStep.cs" />
-    <Compile Include="ScriptProvider\Scripts\DropJob.cs" />
-    <Compile Include="ScriptProvider\Scripts\EnableJob.cs" />
-    <Compile Include="Services\Deployment.cs" />
+    <Compile Include="ScriptProviders\Scripts\CreateJob.cs" />
+    <Compile Include="ScriptProviders\Scripts\CreateNotification.cs" />
+    <Compile Include="ScriptProviders\Scripts\CreateSchedule.cs" />
+    <Compile Include="ScriptProviders\Scripts\CreateStep.cs" />
+    <Compile Include="ScriptProviders\Scripts\DropJob.cs" />
+    <Compile Include="ScriptProviders\Scripts\EnableJob.cs" />
+    <Compile Include="Builders\DeploymentConfiguration.cs" />
+    <Compile Include="Services\DeploymentService.cs" />
     <Compile Include="Services\IntegrationServicesFileService.cs" />
     <Compile Include="Services\SqlExecutionService.cs" />
   </ItemGroup>

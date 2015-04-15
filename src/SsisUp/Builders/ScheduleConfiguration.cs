@@ -1,6 +1,7 @@
 ﻿ using System;
+ using SsisUp.Builders.References;
 
-namespace SsisUp.Configurations
+namespace SsisUp.Builders
 {
     public class ScheduleConfiguration
     {

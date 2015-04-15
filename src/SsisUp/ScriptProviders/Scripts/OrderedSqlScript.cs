@@ -1,4 +1,4 @@
-﻿namespace SsisUp.Configurations
+﻿namespace SsisUp.ScriptProviders.Scripts
 {
     public class OrderedSqlScript
     {
