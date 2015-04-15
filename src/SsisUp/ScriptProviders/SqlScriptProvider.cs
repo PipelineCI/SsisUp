@@ -15,17 +15,17 @@ namespace SsisUp.ScriptProviders
 
     public class SqlScriptProvider : ISqlScriptProvider
     {
-        private readonly IJobConfigurationParser jobConfigurationParser;
+        private readonly IJobConfigurationParser _jobConfigurationParser;
 
         public SqlScriptProvider(IJobConfigurationParser jobConfigurationParser)
         {
             if (jobConfigurationParser == null) throw new ArgumentNullException("jobConfigurationParser");
-            this.jobConfigurationParser = jobConfigurationParser;
+            this._jobConfigurationParser = jobConfigurationParser;
         }
 
         public IEnumerable<SqlScript> Build(JobConfiguration jobConfiguration)
         {
-            jobConfigurationParser.Parse(jobConfiguration);
+            _jobConfigurationParser.Parse(jobConfiguration);
 
             var output = new List<SqlScript>();
 

@@ -7,20 +7,20 @@ namespace SsisUp.Services
 {
     public interface IFileService
     {
-        int Deploy(JobConfiguration jobConfiguration);
+        int Execute(JobConfiguration jobConfiguration);
     }
 
     public class IntegrationServicesFileService : IFileService
     {
-        private readonly IIoWrapper ioWrapper;
+        private readonly IIoWrapper _ioWrapper;
 
         public IntegrationServicesFileService(IIoWrapper ioWrapper)
         {
             if (ioWrapper == null) throw new ArgumentNullException("ioWrapper");
-            this.ioWrapper = ioWrapper;
+            this._ioWrapper = ioWrapper;
         }
 
-        public int Deploy(JobConfiguration jobConfiguration)
+        public int Execute(JobConfiguration jobConfiguration)
         {
             foreach (var stepConfiguration in jobConfiguration.Steps)
             {
@@ -29,9 +29,9 @@ namespace SsisUp.Services
 
                 try
                 {
-                    ioWrapper.CreateDirectoryIfNotExists(stepConfiguration.DtsxFileDestination);
-                    ioWrapper.CopyFile(stepConfiguration.DtsxFile, stepConfiguration.DtsxFileDestination);
-                    ioWrapper.CopyFile(stepConfiguration.DtsxConfigurationFile, stepConfiguration.DtsxFileDestination);
+                    _ioWrapper.CreateDirectoryIfNotExists(stepConfiguration.DtsxFileDestination);
+                    _ioWrapper.CopyFile(stepConfiguration.DtsxFile, stepConfiguration.DtsxFileDestination);
+                    _ioWrapper.CopyFile(stepConfiguration.DtsxConfigurationFile, stepConfiguration.DtsxFileDestination);
                 }
                 catch(Exception ex)
                 {

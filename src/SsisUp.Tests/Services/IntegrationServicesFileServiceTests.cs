@@ -24,7 +24,7 @@ namespace SsisUp.Tests.Services
 
             var fileService = new IntegrationServicesFileService(mockIoWrapper.Object);
 
-            var result = fileService.Deploy(jobConfiguration);
+            var result = fileService.Execute(jobConfiguration);
 
             Assert.That(result, Is.EqualTo(0));
         }
@@ -41,7 +41,7 @@ namespace SsisUp.Tests.Services
 
             var fileService = new IntegrationServicesFileService(new IoWrapper());
 
-            var result = fileService.Deploy(jobConfiguration);
+            var result = fileService.Execute(jobConfiguration);
 
             Assert.That(result, Is.EqualTo(-1));
         }
@@ -60,7 +60,7 @@ namespace SsisUp.Tests.Services
             
             var fileService = new IntegrationServicesFileService(mockIoWrapper.Object);
 
-            var result = fileService.Deploy(jobConfiguration);
+            var result = fileService.Execute(jobConfiguration);
 
             Assert.That(result, Is.EqualTo(0));
             mockIoWrapper.Verify(x => x.CreateDirectoryIfNotExists(It.IsAny<string>()), Times.Once());

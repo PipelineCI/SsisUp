@@ -18,10 +18,10 @@ namespace SsisUp.Builders
         public JobConfiguration JobConfiguration { get; private set; }
 
         public IFileService FileService { get; private set; }
-        public SqlScriptProvider SqlScriptProvider { get; private set; }
+        public ISqlScriptProvider SqlScriptProvider { get; private set; }
+        public IDeploymentService DeploymentService { get; private set; }
         public ISqlExecutionService SqlExecutionService { get; private set; }
         public IJobConfigurationParser JobConfigurationParser { get; private set; }
-
 
         public static DeploymentConfiguration Create()
         {
@@ -31,15 +31,17 @@ namespace SsisUp.Builders
                 Debug = false,
                 FileService = new IntegrationServicesFileService(new IoWrapper()),
                 SqlExecutionService = new SqlExecutionService(),
-                JobConfigurationParser = new JobConfigurationParser(),
+                JobConfigurationParser = new JobConfigurationParser()
             };
 
             Configuration.SqlScriptProvider =
                 new SqlScriptProvider(Configuration.JobConfigurationParser);
             
+            Configuration.DeploymentService = new DeploymentService(Configuration.JobConfigurationParser,
+                Configuration.SqlScriptProvider, Configuration.FileService, Configuration.SqlExecutionService);
+            
             return Configuration;
         }
-
 
         public DeploymentConfiguration WithCustomFileService(IFileService fileService)
         {
@@ -56,6 +58,18 @@ namespace SsisUp.Builders
         public DeploymentConfiguration WithCustomJobConfigurationParser(IJobConfigurationParser jobConfigurationParser)
         {
             Configuration.JobConfigurationParser = jobConfigurationParser;
+            return Configuration;
+        }
+
+        public DeploymentConfiguration WithCustomDeploymentService(IDeploymentService deploymentService)
+        {
+            Configuration.DeploymentService = deploymentService;
+            return Configuration;
+        }
+
+        public DeploymentConfiguration WithCustomSqlScriptProvider(ISqlScriptProvider sqlScriptProvider)
+        {
+            Configuration.SqlScriptProvider = sqlScriptProvider;
             return Configuration;
         }
 
@@ -87,17 +101,7 @@ namespace SsisUp.Builders
 
         public int Deploy()
         {
-            JobConfigurationParser.Parse(Configuration.JobConfiguration);
-
-            var scripts = SqlScriptProvider.Build(Configuration.JobConfiguration);
-            var exitCode = SqlExecutionService.Execute(Configuration.ConnectionString, scripts, Configuration.Debug);
-
-            if (exitCode != 0)
-                return exitCode;
-
-            exitCode = FileService.Deploy(Configuration.JobConfiguration);
-
-            return exitCode;
+            return DeploymentService.Execute(Configuration);
         }
     }
 }
