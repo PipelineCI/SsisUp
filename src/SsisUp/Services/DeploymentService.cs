@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using SsisUp.Builders;
 using SsisUp.Builders.Parsers;
 using SsisUp.ScriptProviders;
@@ -7,7 +8,7 @@ namespace SsisUp.Services
 {
     public interface IDeploymentService
     {
-        int Execute(DeploymentConfiguration configuration);
+        DeploymentResult Execute(DeploymentConfiguration configuration);
     }
 
     public class DeploymentService : IDeploymentService
@@ -33,19 +34,19 @@ namespace SsisUp.Services
             _sqlExecutionService = sqlExecutionService;
         }
 
-        public int Execute(DeploymentConfiguration configuration)
+        public DeploymentResult Execute(DeploymentConfiguration configuration)
         {
             _jobConfigurationParser.Parse(configuration.JobConfiguration);
 
             var scripts = _sqlScriptProvider.Build(configuration.JobConfiguration);
-            var exitCode = _sqlExecutionService.Execute(configuration.ConnectionString, scripts, configuration.Debug);
 
-            if (exitCode != 0)
-                return exitCode;
+            var sqlResult = _sqlExecutionService.Execute(configuration.ConnectionString, scripts, configuration.Debug);
+            if (!sqlResult.Successful)
+                return sqlResult;
 
-            exitCode = _fileService.Execute(configuration.JobConfiguration);
+            var fileDeployResult = _fileService.Execute(configuration.JobConfiguration);
 
-            return exitCode;
+            return fileDeployResult;
         }
     }
 }

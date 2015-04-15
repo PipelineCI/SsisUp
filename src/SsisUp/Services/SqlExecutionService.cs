@@ -8,12 +8,12 @@ namespace SsisUp.Services
 {
     public interface ISqlExecutionService
     {
-        int Execute(string connectionString, IEnumerable<SqlScript> sqlScripts, bool debug);
+        DeploymentResult Execute(string connectionString, IEnumerable<SqlScript> sqlScripts, bool debug);
     }
 
     public class SqlExecutionService : ISqlExecutionService
     {
-        public int Execute(string connectionString, IEnumerable<SqlScript> sqlScripts, bool debug)
+        public DeploymentResult Execute(string connectionString, IEnumerable<SqlScript> sqlScripts, bool debug)
         {
             UpgradeEngine upgradeEngine;
             
@@ -37,18 +37,9 @@ namespace SsisUp.Services
 
             var result = upgradeEngine.PerformUpgrade();
 
-            if (!result.Successful)
-            {
-                Console.ForegroundColor = ConsoleColor.Red;
-                Console.WriteLine(result.Error);
-                Console.ResetColor();
-                return -1;
-            }
-
-            Console.ForegroundColor = ConsoleColor.Green;
-            Console.WriteLine("Success!");
-            Console.ResetColor();
-            return 0;
+            return !result.Successful
+                ? new DeploymentResult(result.Error, result.Successful, GetType())
+                : new DeploymentResult(null, result.Successful, GetType());
         }
     }
 }

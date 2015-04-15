@@ -99,7 +99,7 @@ namespace SsisUp.Builders
             return Configuration;
         }
 
-        public int Deploy()
+        public DeploymentResult Deploy()
         {
             return DeploymentService.Execute(Configuration);
         }

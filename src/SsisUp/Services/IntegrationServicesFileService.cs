@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Linq;
+using System.Runtime.InteropServices;
 using SsisUp.Builders;
 using SsisUp.Builders.References;
 using SsisUp.Helpers;
@@ -7,7 +9,7 @@ namespace SsisUp.Services
 {
     public interface IFileService
     {
-        int Execute(JobConfiguration jobConfiguration);
+        DeploymentResult Execute(JobConfiguration jobConfiguration);
     }
 
     public class IntegrationServicesFileService : IFileService
@@ -20,13 +22,12 @@ namespace SsisUp.Services
             this._ioWrapper = ioWrapper;
         }
 
-        public int Execute(JobConfiguration jobConfiguration)
+        public DeploymentResult Execute(JobConfiguration jobConfiguration)
         {
-            foreach (var stepConfiguration in jobConfiguration.Steps)
-            {
-                if (stepConfiguration.SubSystem != SsisSubSystem.IntegrationServices) 
-                    continue;
+            DeploymentResult result;
 
+            foreach (var stepConfiguration in jobConfiguration.Steps.Where(stepConfiguration => stepConfiguration.SubSystem == SsisSubSystem.IntegrationServices))
+            {
                 try
                 {
                     _ioWrapper.CreateDirectoryIfNotExists(stepConfiguration.DtsxFileDestination);
@@ -35,11 +36,13 @@ namespace SsisUp.Services
                 }
                 catch(Exception ex)
                 {
-                    return -1;
+                    result = new DeploymentResult(ex, false, GetType());
+                    return result;
                 }
             }
-
-            return 0;
+            
+            result = new DeploymentResult(null, true, GetType());
+            return result;
         }
     }
 }

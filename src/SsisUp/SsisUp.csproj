@@ -43,7 +43,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Builders\Parsers\JobConfigurationParser.cs" />
-    <Compile Include="Builders\Parsers\JobConfigurationParserException.cs" />
+    <Compile Include="Builders\Parsers\Exceptions\JobConfigurationParserException.cs" />
     <Compile Include="ScriptProviders\SqlScriptProvider.cs" />
     <Compile Include="Builders\Journals\ConsoleLogJournal.cs" />
     <Compile Include="Builders\References\FrequencyDay.cs" />
@@ -63,6 +63,7 @@
     <Compile Include="ScriptProviders\Scripts\DropJob.cs" />
     <Compile Include="ScriptProviders\Scripts\EnableJob.cs" />
     <Compile Include="Builders\DeploymentConfiguration.cs" />
+    <Compile Include="Services\DeploymentResult.cs" />
     <Compile Include="Services\DeploymentService.cs" />
     <Compile Include="Services\IntegrationServicesFileService.cs" />
     <Compile Include="Services\SqlExecutionService.cs" />
@@ -70,6 +71,7 @@
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
