@@ -5,13 +5,13 @@ namespace SsisUp.Builders
 {
     public class ScheduleConfiguration
     {
-        public static ScheduleConfiguration Configuration { get; private set; }
+        private static ScheduleConfiguration Configuration { get; set; }
 
-        public string ScheduleName { get; set; }
-        public int FrequencyInterval { get; set; }
-        public string ActiveDate { get; set; }
-        public string DeactiveDate { get; set; }
-        public string StartTime { get; set; }
+        public string StartTime { get; private set; }
+        public string ActiveDate { get; private set; }
+        public string DeactiveDate { get; private set; }
+        public string ScheduleName { get; private set; }
+        public int FrequencyInterval { get; private set; }
 
         public static ScheduleConfiguration Create()
         {

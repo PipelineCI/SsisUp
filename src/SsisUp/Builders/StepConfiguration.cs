@@ -4,18 +4,18 @@ namespace SsisUp.Builders
 {
     public class StepConfiguration
     {
-        public static StepConfiguration Configuration { get; private set; }
+        private static StepConfiguration Configuration { get; set; }
 
+        public int StepId { get; private set; }
+        public string RunAs { get; private set; }
+        public string Command { get; private set; }
+        public string DtsxFile { get; private set; }
         public string StepName { get; private set; }
-        public int StepId { get; set; }
-        public JobAction SuccessAction { get; set; }
-        public JobAction FailureAction { get; set; }
-        public string SubSystem { get; set; }
-        public string Command { get; set; }
-        public string RunAs { get; set; }
-        public string DtsxFile { get; set; }
-        public string DtsxConfigurationFile { get; set; }
-        public string DtsxFileDestination { get; set; }
+        public string SubSystem { get; private set; }
+        public JobAction SuccessAction { get; private set; }
+        public JobAction FailureAction { get; private set; }
+        public string DtsxFileDestination { get; private set; }
+        public string DtsxConfigurationFile { get; private set; }
 
 
         public static StepConfiguration Create()
