@@ -6,24 +6,21 @@ namespace SsisUp.Builders
     {
         public static JobConfiguration Configuration { get; private set; }
 
+        public bool IsEnabled { get; private set; }
         public string JobName { get; private set; }
+        public string SsisOwner { get; private set; }
+        public string SsisServer { get; private set; }
         public string JobDescription { get; private set; }
-        public string SsisOwner { get; set; }
-        public string SsisServer { get; set; }
-        public bool IsEnabled { get; set; }
 
-        public List<StepConfiguration> Steps { get; set; }
-        public List<ScheduleConfiguration> Schedules { get; set; }
-        public NotificationConfiguration Notification { get; set; }
-
-        
+        public List<StepConfiguration> Steps { get; private set; }
+        public List<ScheduleConfiguration> Schedules { get; private set; }
+        public NotificationConfiguration Notification { get; private set; }
 
         public static JobConfiguration Create()
         {
             Configuration = new JobConfiguration();
             return Configuration;
         }
-
         
         public JobConfiguration WithName(string name)
         {
