@@ -4,7 +4,7 @@ namespace SsisUp.Builders
 {
     public class JobConfiguration
     {
-        public static JobConfiguration Configuration { get; private set; }
+        private static JobConfiguration Configuration { get; set; }
 
         public bool IsEnabled { get; private set; }
         public string JobName { get; private set; }

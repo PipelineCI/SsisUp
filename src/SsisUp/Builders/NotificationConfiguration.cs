@@ -2,10 +2,10 @@ namespace SsisUp.Builders
 {
     public class NotificationConfiguration
     {
-        public static NotificationConfiguration Configuration { get; private set; }
+        private static NotificationConfiguration Configuration { get; set; }
 
-        public string OperatorEmail { get; set; }
-        public string Operator { get; set; }
+        public string Operator { get; private set; }
+        public string OperatorEmail { get; private set; }
         
         public static NotificationConfiguration Create()
         {
