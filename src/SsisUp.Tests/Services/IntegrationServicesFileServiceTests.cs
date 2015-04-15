@@ -26,7 +26,7 @@ namespace SsisUp.Tests.Services
 
             var result = fileService.Execute(jobConfiguration);
 
-            Assert.That(result, Is.EqualTo(0));
+            Assert.That(result.Successful, Is.EqualTo(true));
         }
 
         [Test]
@@ -43,7 +43,7 @@ namespace SsisUp.Tests.Services
 
             var result = fileService.Execute(jobConfiguration);
 
-            Assert.That(result, Is.EqualTo(-1));
+            Assert.That(result.Successful, Is.EqualTo(false));
         }
 
         [Test]
@@ -62,7 +62,7 @@ namespace SsisUp.Tests.Services
 
             var result = fileService.Execute(jobConfiguration);
 
-            Assert.That(result, Is.EqualTo(0));
+            Assert.That(result.Successful, Is.EqualTo(true));
             mockIoWrapper.Verify(x => x.CreateDirectoryIfNotExists(It.IsAny<string>()), Times.Once());
             mockIoWrapper.Verify(x => x.CopyFile(It.IsAny<string>(), It.IsAny<string>()), Times.Exactly(2));
         }

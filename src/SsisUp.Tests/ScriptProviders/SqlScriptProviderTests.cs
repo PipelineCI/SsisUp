@@ -9,7 +9,7 @@ using SsisUp.ScriptProviders;
 namespace SsisUp.Tests.Builders
 {
     [TestFixture]
-    public class SqlScriptBuilderTests
+    public class SqlScriptProviderTests
     {
         [Test]
         public void Ensure_a_list_of_5_scripts_are_returned_given_a_job_configuration_is_enabled_and_with_1_step_and_1_schedule()

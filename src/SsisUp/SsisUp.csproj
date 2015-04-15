@@ -45,7 +45,6 @@
     <Compile Include="Builders\Parsers\JobConfigurationParser.cs" />
     <Compile Include="Builders\Parsers\Exceptions\JobConfigurationParserException.cs" />
     <Compile Include="ScriptProviders\SqlScriptProvider.cs" />
-    <Compile Include="Builders\Journals\ConsoleLogJournal.cs" />
     <Compile Include="Builders\References\FrequencyDay.cs" />
     <Compile Include="Builders\References\JobAction.cs" />
     <Compile Include="Builders\JobConfiguration.cs" />
