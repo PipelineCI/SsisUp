@@ -35,9 +35,6 @@
     <Reference Include="DbUp">
       <HintPath>..\packages\dbup.3.2.1\lib\NET35\DbUp.dll</HintPath>
     </Reference>
-    <Reference Include="SsisUp">
-      <HintPath>..\packages\SsisUp.1.0.0.11\lib\net45\SsisUp.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
