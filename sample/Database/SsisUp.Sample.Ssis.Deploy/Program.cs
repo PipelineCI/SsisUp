@@ -15,7 +15,7 @@ namespace SsisUp.Sample.Ssis.Deploy
             var jobConfiguration = JobConfiguration.Create()
                 .WithName("Ssis Up - Sample Data Load")
                 .WithDescription("This is a sample data load")
-                .WithSsisOwner(Environment.UserName)
+                .WithSsisOwner("sa")
                 .WithSsisServer(Environment.MachineName)
                 .Enabled()
                 .WithSchedule(
