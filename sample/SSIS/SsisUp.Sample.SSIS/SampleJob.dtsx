@@ -6,13 +6,14 @@
   DTS:CreatorComputerName=""
   DTS:CreatorName="JSM85"
   DTS:DTSID="{E7BE2348-B9F5-43E8-93D1-267A455E1858}"
+  DTS:EnableConfig="True"
   DTS:ExecutableType="SSIS.Package.3"
   DTS:LastModifiedProductVersion="11.0.2100.60"
   DTS:LocaleID="2057"
   DTS:ObjectName="SampleJob"
   DTS:PackageType="5"
-  DTS:VersionBuild="3"
-  DTS:VersionGUID="{EA7976F1-6106-4881-A3F3-C7B1A7F1A941}">
+  DTS:VersionBuild="4"
+  DTS:VersionGUID="{9FB138AC-D09F-4534-83EF-64042FDE9BE7}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">6</DTS:Property>
   <DTS:ConnectionManagers>
@@ -37,6 +38,14 @@
       </DTS:ObjectData>
     </DTS:ConnectionManager>
   </DTS:ConnectionManagers>
+  <DTS:Configurations>
+    <DTS:Configuration
+      DTS:ConfigurationString="C:\GitHub\Public\SsisUp\sample\SSIS\SsisUp.Sample.SSIS\SampleJob.dtsConfig"
+      DTS:ConfigurationType="1"
+      DTS:CreationName=""
+      DTS:DTSID="{AF7273E5-E30A-4946-BA43-20E79266DC0B}"
+      DTS:ObjectName="Configuration" />
+  </DTS:Configurations>
   <DTS:Variables />
   <DTS:Executables>
     <DTS:Executable
