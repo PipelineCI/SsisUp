@@ -11,7 +11,7 @@ namespace SsisUp.Tests.Services
     public class IntegrationServicesFileServiceTests
     {
         [Test]
-        public void Deploy_should_return_0_if_the_package_is_not_an_integration_services_job()
+        public void FileService_Execute_should_return_successful_result_if_the_job_step_is_not_an_integration_services_job()
         {
             var jobConfiguration =
                 JobConfiguration.Create()
@@ -30,7 +30,7 @@ namespace SsisUp.Tests.Services
         }
 
         [Test]
-        public void Deploy_should_return_negative_1_if_the_package_is_an_integration_services_job_and_an_exception_is_thrown()
+        public void FileService_Execute_should_return_unsuccessful_result_if_the_step_is_an_integration_services_job_step_and_an_exception_is_thrown()
         {
             var jobConfiguration =
                 JobConfiguration.Create()
@@ -47,7 +47,7 @@ namespace SsisUp.Tests.Services
         }
 
         [Test]
-        public void Deploy_should_return_0_if_the_package_is_an_integration_services_job_and_NO_exceptions_are_thrown()
+        public void FileService_Execute_should_return_sucessful_result_if_the_step_is_an_integration_services_job_step_and_NO_exceptions_are_thrown()
         {
             var jobConfiguration =
                 JobConfiguration.Create()

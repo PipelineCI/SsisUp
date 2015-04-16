@@ -14,6 +14,32 @@ namespace SsisUp.Tests.Builders
         [Test]
         public void Ensure_a_list_of_5_scripts_are_returned_given_a_job_configuration_is_enabled_and_with_1_step_and_1_schedule()
         {
+            var jobConfiguration = CreateJobConfiguration();
+
+            var builder = new SqlScriptProvider(new JobConfigurationParser());
+            var scripts = builder.Build(jobConfiguration);
+
+            Assert.That(scripts != null);
+            Assert.That(scripts.Count(), Is.EqualTo(5));
+        }
+
+        [Test]
+        public void Ensure_the_list_of_scripts_for_a_job_configuration_are_in_the_correct_order()
+        {
+            var jobConfiguration = CreateJobConfiguration();
+
+            var builder = new SqlScriptProvider(new JobConfigurationParser());
+            var scripts = builder.Build(jobConfiguration).ToList();
+
+            Assert.That(scripts[0].Name, Is.EqualTo("1 - Drop Job"));
+            Assert.That(scripts[1].Name, Is.EqualTo("2 - Create Job"));
+            Assert.That(scripts[2].Name, Is.EqualTo("3 - Create Schedule"));
+            Assert.That(scripts[3].Name, Is.EqualTo("4 - Create Step"));
+            Assert.That(scripts[4].Name, Is.EqualTo("5 - Enable Job"));
+        }
+
+        private static JobConfiguration CreateJobConfiguration()
+        {
             var jobConfiguration =
                 JobConfiguration.Create()
                     .WithName("Test Name")
@@ -34,12 +60,7 @@ namespace SsisUp.Tests.Builders
                         .ActivatedUntil(DateTime.Now.AddDays(1))
                         .StartingAt(TimeSpan.FromSeconds(6)))
                     .Enabled();
-
-            var builder = new SqlScriptProvider(new JobConfigurationParser());
-            var scripts = builder.Build(jobConfiguration);
-
-            Assert.That(scripts != null);
-            Assert.That(scripts.Count(), Is.EqualTo(5));
+            return jobConfiguration;
         }
     }
 }
