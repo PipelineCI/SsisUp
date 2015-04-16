@@ -1,4 +1,4 @@
-version: 0.0.{build}
+version: 0.0.{build}-beta
 skip_tags: true
 nuget:
   project_feed: true
@@ -6,4 +6,5 @@ before_build:
 - nuget restore src\SsisUp.sln
 build:
   project: src\SsisUp.sln
+  publish_nuget: true
   verbosity: minimal
