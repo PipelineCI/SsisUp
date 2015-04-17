@@ -58,8 +58,7 @@ namespace SsisUp.Tests.Builders
                         .RunOn(FrequencyDay.Monday)
                         .ActivatedFrom(DateTime.Now)
                         .ActivatedUntil(DateTime.Now.AddDays(1))
-                        .StartingAt(TimeSpan.FromSeconds(6)))
-                    .Enabled();
+                        .StartingAt(TimeSpan.FromSeconds(6)));
             return jobConfiguration;
         }
     }
