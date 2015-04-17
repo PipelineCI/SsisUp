@@ -1,5 +1,11 @@
-version: 0.0.{build}-beta
+version: 0.0.{build}
 skip_tags: true
+assembly_info:
+  patch: true
+  file: '**\AssemblyInfo.*'
+  assembly_version: '{version}'
+  assembly_file_version: '{version}'
+  assembly_informational_version: '{version}'
 nuget:
   project_feed: true
 before_build:
