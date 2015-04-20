@@ -14,7 +14,6 @@ namespace SsisUp.Builders
 
         public bool Debug { get; private set; }
         public string ConnectionString { get; set; }
-        public IJournal DbUpJournal { get; private set; }
         public JobConfiguration JobConfiguration { get; private set; }
 
         public IFileService FileService { get; private set; }
@@ -23,11 +22,14 @@ namespace SsisUp.Builders
         public ISqlExecutionService SqlExecutionService { get; private set; }
         public IJobConfigurationParser JobConfigurationParser { get; private set; }
 
+        /// <summary>
+        /// Create a deployment configuration to deploy the Job
+        /// </summary>
+        /// <returns>DeploymentConfiguration</returns>
         public static DeploymentConfiguration Create()
         {
             Configuration = new DeploymentConfiguration
             {
-                DbUpJournal = new NullJournal(),
                 Debug = false,
                 FileService = new IntegrationServicesFileService(new IoWrapper()),
                 SqlExecutionService = new SqlExecutionService(),
@@ -43,42 +45,22 @@ namespace SsisUp.Builders
             return Configuration;
         }
 
-        public DeploymentConfiguration WithCustomFileService(IFileService fileService)
-        {
-            Configuration.FileService = fileService;
-            return Configuration;
-        }
-
-        public DeploymentConfiguration WithCustomSqlExecutionService(ISqlExecutionService sqlExecutionService)
-        {
-            Configuration.SqlExecutionService = sqlExecutionService;
-            return Configuration;
-        }
-
-        public DeploymentConfiguration WithCustomJobConfigurationParser(IJobConfigurationParser jobConfigurationParser)
-        {
-            Configuration.JobConfigurationParser = jobConfigurationParser;
-            return Configuration;
-        }
-
-        public DeploymentConfiguration WithCustomDeploymentService(IDeploymentService deploymentService)
-        {
-            Configuration.DeploymentService = deploymentService;
-            return Configuration;
-        }
-
-        public DeploymentConfiguration WithCustomSqlScriptProvider(ISqlScriptProvider sqlScriptProvider)
-        {
-            Configuration.SqlScriptProvider = sqlScriptProvider;
-            return Configuration;
-        }
-
+        /// <summary>
+        /// Specify the connection string to the master database on the server you would like to deploy the Job too
+        /// </summary>
+        /// <param name="connectionString">Connection String to master database</param>
+        /// <returns>DeploymentConfiguration</returns>
         public DeploymentConfiguration ToDatabase(string connectionString)
         {
             Configuration.ConnectionString = connectionString;
             return Configuration;
         }
 
+        /// <summary>
+        /// Specify the jobConfiguration you would like to deploy
+        /// </summary>
+        /// <param name="jobConfiguration">Specify the jobConfiguration</param>
+        /// <returns>DeploymentConfiguration</returns>
         public DeploymentConfiguration WithJobConfiguration(JobConfiguration jobConfiguration)
         {
             if (jobConfiguration == null) throw new ArgumentNullException("jobConfiguration");
@@ -86,19 +68,20 @@ namespace SsisUp.Builders
             return Configuration;
         }
 
-        public DeploymentConfiguration WithJournal(IJournal journal)
-        {
-            if (journal == null) throw new ArgumentNullException("journal");
-            Configuration.DbUpJournal = journal;
-            return Configuration;
-        }
-
+        /// <summary>
+        /// Enabling logging will log more info to the console out
+        /// </summary>
+        /// <returns>DeploymentConfiguration</returns>
         public DeploymentConfiguration EnableVerboseLogging()
         {
             Configuration.Debug = true;
             return Configuration;
         }
 
+        /// <summary>
+        /// Will deploy the configuration
+        /// </summary>
+        /// <returns>DeploymentResult</returns>
         public DeploymentResult Deploy()
         {
             return DeploymentService.Execute(Configuration);

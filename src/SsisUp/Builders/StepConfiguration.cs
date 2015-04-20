@@ -113,9 +113,9 @@ namespace SsisUp.Builders
         }
 
         /// <summary>
-        /// If
+        /// If this is an Integration Services Step, then you must specify the Dtsx file
         /// </summary>
-        /// <param name="fileName"></param>
+        /// <param name="fileName">Dtsx file location</param>
         /// <returns>StepConfiguration</returns>
         public StepConfiguration WithDtsxFile(string fileName)
         {
@@ -124,9 +124,9 @@ namespace SsisUp.Builders
         }
 
         /// <summary>
-        /// 
+        /// Use this if your SSIS project uses package configurations
         /// </summary>
-        /// <param name="configFileName"></param>
+        /// <param name="configFileName">dtsConfig file location</param>
         /// <returns>StepConfiguration</returns>
         public StepConfiguration WithDtsConfigurationFile(string configFileName)
         {
@@ -135,9 +135,9 @@ namespace SsisUp.Builders
         }
 
         /// <summary>
-        /// 
+        /// Please specify the File Destination for the Dtsx and dtsConfig files
         /// </summary>
-        /// <param name="destination"></param>
+        /// <param name="destination">Specify the destination of the file(s)</param>
         /// <returns>StepConfiguration</returns>
         public StepConfiguration WithDtsxFileDestination(string destination)
         {
