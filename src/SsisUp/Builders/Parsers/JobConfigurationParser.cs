@@ -63,10 +63,7 @@ namespace SsisUp.Builders.Parsers
             {
                 
                 if (string.IsNullOrEmpty(stepConfiguration.DtsxFile))
-                    throw new JobConfigurationParserException("Sub System is missing from Step Configuration, please check your configuration setup");
-                
-                if (string.IsNullOrEmpty(stepConfiguration.DtsxConfigurationFile))
-                    throw new JobConfigurationParserException("Sub System is missing from Step Configuration, please check your configuration setup");
+                    throw new JobConfigurationParserException("Dtsx File is missing from Step Configuration, please check your configuration setup");
                 
                 if (string.IsNullOrEmpty(stepConfiguration.DtsxFileDestination))
                     throw new JobConfigurationParserException("Dtsx File Destination is missing from Step Configuration, please check your configuration setup");
