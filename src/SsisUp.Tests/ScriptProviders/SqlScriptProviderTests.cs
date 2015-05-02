@@ -6,7 +6,7 @@ using SsisUp.Builders.Parsers;
 using SsisUp.Builders.References;
 using SsisUp.ScriptProviders;
 
-namespace SsisUp.Tests.Builders
+namespace SsisUp.Tests.ScriptProviders
 {
     [TestFixture]
     public class SqlScriptProviderTests
