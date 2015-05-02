@@ -128,6 +128,7 @@ The code above will configure a job in MS SQL Server with one step and one sched
 ![Output](./assets/README_Images/Output.PNG)
 
 **PLEASE NOTE:** Write access to Master database is required in order to deploy the job.
+
 **PLEASE NOTE:** Every time the application runs it will drop and re-create the job.
 
 If you now open up MS SQL Server Management Studio you will see the job has been created with all the right configuration settings
