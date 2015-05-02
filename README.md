@@ -9,6 +9,8 @@ SsisUp is a .Net library that will help you to deploy MS SQL Server Integration 
 
 Start by creating a MS SQL Server Integration Services (SSIS) package using SQL Server Data Tools. This sample will use just have an empty Data Flow Task (This tutorial will only focus on deploying an SSIS package).
 
+![SSDT Project](./assets/README_Images/SSDT_Project.png)
+
 **PLEASE NOTE:** SsisUp only supports package deployment model project types
 
 Now, in the same directory you created the project above, open Visual Studio 2013 and create a new Console Application. Once created, install the SsisUp Nuget; Run the following command in the Package Manager Console:
@@ -17,7 +19,15 @@ Now, in the same directory you created the project above, open Visual Studio 201
 
 Next, create a folder in the project called Package, this is where we will reference the package created at the beginning of tutorial.
 
-Now, right click on the Package, hover over Add and then click on Existing Item… Navigate to where the dtsx file is located and click Add As Link. Mark the file as Content type and Copy always in the properties window.
+![VS Project](./assets/README_Images/VS_Project.png)
+
+Now, right click on the Package, hover over Add and then click on Existing Item… Navigate to where the dtsx file is located and click Add As Link.
+
+![VS Add Package](./assets/README_Images/VS_Add_Package.png)
+
+Mark the file as Content type and Copy always in the properties window.
+
+![VS Project Properties](./assets/README_Images/VS_Project_Properties.png)
 
 In the App.config file, copy this code below:
 
@@ -97,3 +107,13 @@ namespace Ssis.Deploy
 }
 
 ```
+
+The code above will configure a job in MS SQL Server with one step and one schedule. Hit F5 and you should see the following output:
+
+![Output](./assets/README_Images/Output.png)
+
+**PLEASE NOTE:** Every time the application runs it will drop and re-create the job.
+
+If you now open up MS SQL Server Management Studio you will see the job has been created with all the right configuration settings
+
+![SQL Job](./assets/README_Images/SQL_Job.png)
