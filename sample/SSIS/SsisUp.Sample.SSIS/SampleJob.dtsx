@@ -12,8 +12,8 @@
   DTS:LocaleID="2057"
   DTS:ObjectName="SampleJob"
   DTS:PackageType="5"
-  DTS:VersionBuild="5"
-  DTS:VersionGUID="{36DEF701-1589-4ED8-B6B7-55F1A3F3AE8D}">
+  DTS:VersionBuild="6"
+  DTS:VersionGUID="{2CA2EF9A-7618-4D65-953D-87A7ABAB3522}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">6</DTS:Property>
   <DTS:ConnectionManagers>
@@ -378,37 +378,37 @@
         <NodeLayout
           Size="139,42"
           Id="Package\Data Flow Task\Excel Source"
-          TopLeft="226,117" />
+          TopLeft="77,65" />
         <NodeLayout
           Size="171,42"
           Id="Package\Data Flow Task\OLE DB Destination"
-          TopLeft="317,260" />
+          TopLeft="200,232" />
         <EdgeLayout
           Id="Package\Data Flow Task.Paths[Excel Source Output]"
-          TopLeft="295.5,159">
+          TopLeft="146.5,107">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="107,101"
+              EndConnector="139,125"
               Start="0,0"
-              End="107,93.5">
+              End="139,117.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,46.5" />
+                    End="0,58.5" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,46.5"
-                    Point2="0,50.5"
-                    Point3="4,50.5" />
+                    Point1="0,58.5"
+                    Point2="0,62.5"
+                    Point3="4,62.5" />
                   <mssgle:LineSegment
-                    End="103,50.5" />
+                    End="135,62.5" />
                   <mssgle:CubicBezierSegment
-                    Point1="103,50.5"
-                    Point2="107,50.5"
-                    Point3="107,54.5" />
+                    Point1="135,62.5"
+                    Point2="139,62.5"
+                    Point3="139,66.5" />
                   <mssgle:LineSegment
-                    End="107,93.5" />
+                    End="139,117.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
