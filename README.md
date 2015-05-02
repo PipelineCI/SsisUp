@@ -7,16 +7,16 @@ SsisUp is a .Net library that will help you to deploy MS SQL Server Integration 
 
 # Use Case
 
-I built this library in order to automate the deployment of an MS SQL Server Integration Services package / job using [Octopus Deploy](http://octopusdeploy.com/). We can now deploy our Web Application, Windows Services, Database Upgrade (using [DbUp](http://dbup.github.io/)) and SSIS package to Dev, QA and Live without any manual intevention.    
+I built this library in order to automate the deployment of an MS SQL Server Integration Services package / job using [Octopus Deploy](http://octopusdeploy.com/). We can now deploy our Web Application, Windows Services, Database Upgrade (using [DbUp](http://dbup.github.io/)) and SSIS package to Dev, QA and Live without any manual intervention.    
 
 # Main Features
 
 * Create an MS SQL Server Job Schedule that can occur on any day(s) of the week at any time 
 * 3 Job Steps Types are supported (Integration Services, SQL Script and CMD)
-* Enable or Diasble the step on deployment
+* Enable or Disable the step on deployment
 * Configure a SQL Proxy for the Job step
 * Configure a Dtsx Configuration file
-* Dtsx and DtsConfig files are deployed to destination (Write access is required on Destination)
+* .dtsx and .dtsConfig files are deployed to destination (Write access is required on Destination)
 * Define Job step success or failure action
 
 
