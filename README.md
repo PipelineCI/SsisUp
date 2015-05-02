@@ -19,15 +19,15 @@ Now, in the same directory you created the project above, open Visual Studio 201
 
 Next, create a folder in the project called Package, this is where we will reference the package created at the beginning of tutorial.
 
-![VS Project](./assets/README_Images/VS_Project.png)
+![VS Project](./assets/README_Images/VS_Project.PNG)
 
 Now, right click on the Package, hover over Add and then click on Existing Item… Navigate to where the dtsx file is located and click Add As Link.
 
-![VS Add Package](./assets/README_Images/VS_Add_Package.png)
+![VS Add Package](./assets/README_Images/VS_Add_Package.PNG)
 
 Mark the file as Content type and Copy always in the properties window.
 
-![VS Project Properties](./assets/README_Images/VS_Project_Properties.png)
+![VS Project Properties](./assets/README_Images/VS_Project_Properties.PNG)
 
 In the App.config file, copy this code below:
 
@@ -110,10 +110,10 @@ namespace Ssis.Deploy
 
 The code above will configure a job in MS SQL Server with one step and one schedule. Hit F5 and you should see the following output:
 
-![Output](./assets/README_Images/Output.png)
+![Output](./assets/README_Images/Output.PNG)
 
 **PLEASE NOTE:** Every time the application runs it will drop and re-create the job.
 
 If you now open up MS SQL Server Management Studio you will see the job has been created with all the right configuration settings
 
-![SQL Job](./assets/README_Images/SQL_Job.png)
+![SQL Job](./assets/README_Images/SQL_Job.PNG)
