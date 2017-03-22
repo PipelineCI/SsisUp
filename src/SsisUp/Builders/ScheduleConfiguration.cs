@@ -12,6 +12,9 @@ namespace SsisUp.Builders
         public string DeactiveDate { get; private set; }
         public string ScheduleName { get; private set; }
         public int FrequencyInterval { get; private set; }
+        public int FrequencySubdayType { get; private set; }
+        public int FrequencySubdayInterval { get; private set; }
+        
 
         /// <summary>
         /// Create a ScheduleConfiguration. This is used to create a schedule for the Job. i.e. If you would like the job to execute every Saturday at 10am.
@@ -20,6 +23,9 @@ namespace SsisUp.Builders
         public static ScheduleConfiguration Create()
         {
             Configuration = new ScheduleConfiguration();
+            Configuration.FrequencySubdayType = 1;          //Defaults to "At the specified time". 
+            Configuration.FrequencySubdayInterval = 0;
+
             return Configuration;
         }
 
@@ -75,6 +81,13 @@ namespace SsisUp.Builders
         public ScheduleConfiguration ActivatedUntil(DateTime date)
         {
             DeactiveDate = date.ToString("yyyyMMdd");
+            return Configuration;
+        }
+
+        public ScheduleConfiguration OccursEvery(int recurrenceValue, FrequencySubdayType recurrentInterval)
+        {
+            FrequencySubdayInterval = recurrenceValue;
+            FrequencySubdayType = (int)recurrentInterval;
             return Configuration;
         }
 

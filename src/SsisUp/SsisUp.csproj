@@ -44,6 +44,7 @@
   <ItemGroup>
     <Compile Include="Builders\Parsers\JobConfigurationParser.cs" />
     <Compile Include="Builders\Parsers\Exceptions\JobConfigurationParserException.cs" />
+    <Compile Include="Builders\References\FrequencySubdayType.cs" />
     <Compile Include="ScriptProviders\SqlScriptProvider.cs" />
     <Compile Include="Builders\References\FrequencyDay.cs" />
     <Compile Include="Builders\References\JobAction.cs" />
