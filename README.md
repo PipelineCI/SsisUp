@@ -1,3 +1,5 @@
+**PLEASE NOTE:** This repository has been archived and no longer supported. Feel free to fork this and use as you wish.
+
 | Build | Downloads | Version |
 |-------|-----------|---------|
 | [![Build status](https://ci.appveyor.com/api/projects/status/wpk6usmw3welkac8?svg=true)](https://ci.appveyor.com/project/jsm85/ssisup) | ![NuGet Total](https://img.shields.io/nuget/dt/SsisUp.svg) | ![NuGet Version](https://img.shields.io/nuget/v/SsisUp.svg) |
