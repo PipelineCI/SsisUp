@@ -5,6 +5,7 @@ using DbUp.Engine;
 using SsisUp.Builders;
 using SsisUp.Builders.Parsers;
 using SsisUp.ScriptProviders.Scripts;
+using System.Diagnostics;
 
 namespace SsisUp.ScriptProviders
 {
